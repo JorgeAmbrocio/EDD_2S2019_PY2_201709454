@@ -4,23 +4,21 @@
  * and open the template in the editor.
  */
 package edddrive;
-
-/**
- *
- * @author dventura
- */
-import edddrive.formularios.fmrIngresar;
+import edddrive.formularios.*;
 import javax.swing.JOptionPane;
+
+
 public class EDDDRIVE {
 
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
         // TODO code application logic here
-        JOptionPane.showMessageDialog(null, "este es un mensaje", null, JOptionPane.INFORMATION_MESSAGE);
-        fmrIngresar fmr = new fmrIngresar();
-        fmr.show();
+        fmrIngresar fm = new fmrIngresar();
+        fm.show();
+        
     }
     
 }
