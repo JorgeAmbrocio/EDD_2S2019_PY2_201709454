@@ -20,6 +20,10 @@ public class listaDobleEnlazada {
         public nodo(String dato, Object dato_) {
             this.dato = dato;
             this.dato_ = dato_;
+            
+            this.siguiente =null;
+            this.anterior = null;
+            
         }
 
         public nodo() {

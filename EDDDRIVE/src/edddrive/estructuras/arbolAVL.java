@@ -12,6 +12,7 @@ package edddrive.estructuras;
  */
 
 
+
 import javax.swing.JOptionPane ;
 public class arbolAVL {
     public class nodo  {
@@ -48,7 +49,7 @@ public class arbolAVL {
         this.raiz = null;
     }
     
-    public void insertar(String dato, Object dato_){
+    public void insertar__(String dato, Object dato_){
         if (this.raiz == null ){
             // arbol es null, se inserta el dato en la raíz
             this.raiz = new nodo(dato, dato_);
@@ -56,12 +57,12 @@ public class arbolAVL {
             
         }else {
             // verificar en qué parte del árbol se insertan los datos 
-            this.insertar_(dato, dato_ , this.raiz);
+            this.insertar___(dato, dato_ , this.raiz);
         }
     }
     
 
-    public void insertar_ (String dato , Object dato_ , nodo arbol){
+    public void insertar___ (String dato , Object dato_ , nodo arbol){
         if (dato.compareToIgnoreCase(arbol.cont) > 0 ){
             // dato es mayor que el contenido actual del nodo
             // insertar a la derecha
@@ -75,7 +76,7 @@ public class arbolAVL {
                 
                 
             }else {
-                this.insertar_(dato, dato_, arbol.derecha);
+                this.insertar___(dato, dato_, arbol.derecha);
             }
             
         }else if (dato.compareToIgnoreCase(arbol.cont) < 0 ) {
@@ -91,7 +92,7 @@ public class arbolAVL {
                 
             }else {
                 
-                this.insertar_(dato, dato_, arbol.izquierda);
+                this.insertar___(dato, dato_, arbol.izquierda);
             }
             
         }else {
@@ -262,6 +263,21 @@ public class arbolAVL {
     }
     
     
+    public void insertar (String dato, Object dato_) {
+        
+        nodo nuevo = new nodo (dato, dato_);
+        
+        if (this.raiz == null) {
+            this.raiz = nuevo;
+        }else {
+            this.raiz = this.insertarAVL(nuevo, this.raiz);
+        }
+        
+    }
+    
+    
+    
+    // recorridos
     
     
     
