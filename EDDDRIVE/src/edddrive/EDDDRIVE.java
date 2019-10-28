@@ -5,6 +5,7 @@
  */
 package edddrive;
 import edddrive.estructuras.*;
+import edddrive.classes.usuario;
 import javax.swing.JOptionPane;
 
 
@@ -35,6 +36,13 @@ public class EDDDRIVE {
         tb.insertar("karerla", "contrasena");
         tb.insertar("sarerga", "contrasena");
         tb.insertar("sarahyula", "contrasena");
+        
+        usuario us = tb.buscar("dato");
+        
+        tb.eliminar("dato");
+        
+        us = tb.buscar("dato");
+        
     }
     
     

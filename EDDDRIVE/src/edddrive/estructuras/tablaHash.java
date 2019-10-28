@@ -68,7 +68,7 @@ public class tablaHash {
         int intento = 0;
         while (this.tabla[indice].estado_ != estado.vacio) {
             
-            if  ( this.tabla[indice].estado_ == estado.ocupado ) {
+            if  ( this.tabla[indice].estado_ == estado.ocupado  ) {
                 
                 if (this.tabla[indice].usuario_.getUsuario_().equalsIgnoreCase(usuario_) ) {
                     return this.tabla[indice].usuario_;
@@ -77,14 +77,47 @@ public class tablaHash {
                 
                     indice = ( indice + (indice * indice ) + intento ) % this.tMax;
                     intento ++;
+                    
                 }
+            }else if (this.tabla[indice].estado_ == estado.borrado) {
+                if (indice == 0 || indice == 1 ) { indice = 1; }
+                
+                    indice = ( indice + (indice * indice ) + intento ) % this.tMax;
+                    intento ++;
+                    
             }
         }
         
         return null;
     }
     
-    
+    public void eliminar (String usuario_) {
+        // obtiene el índice del elemento a buscar
+        int indice = (( this.getSumaASCII(usuario_) ) % this.tMax);
+        
+        int intento = 0;
+        while (this.tabla[indice].estado_ != estado.vacio) {
+            
+            if  ( this.tabla[indice].estado_ == estado.ocupado ) {
+                
+                if (this.tabla[indice].usuario_.getUsuario_().equalsIgnoreCase(usuario_) ) {
+                    this.tabla[indice] = new celda();
+                    this.tabla[indice].estado_ = estado.borrado;
+                    return;
+                }else {
+                    if (indice == 0 || indice == 1 ) { indice = 1; }
+                
+                    indice = ( indice + (indice * indice ) + intento ) % this.tMax;
+                    intento ++;
+                }
+            }else if (this.tabla[indice].estado_ == estado.borrado ) {
+                    if (indice == 0 || indice == 1 ) { indice = 1; }
+                
+                    indice = ( indice + (indice * indice ) + intento ) % this.tMax;
+                    intento ++;
+            }
+        }
+    }
     
     public void redimencionarTabla () {
         
