@@ -23,7 +23,7 @@ public class tablaHash {
     }
     
     int tMax, usado;
-    float factorCarga ;
+    double factorCarga ;
     celda tabla[];
     
     // constructor
@@ -57,14 +57,31 @@ public class tablaHash {
         this.tabla[indice].estado_ = estado.ocupado;
         
         this.usado += 1;
-        this.factorCarga = (this.usado / this.tMax);
+        this.factorCarga = (double) ( (double) this.usado /  (double) this.tMax);
     }
     
     public usuario buscar (String usuario_) {
         
+        // obtiene el índice del elemento a buscar
+        int indice = (( this.getSumaASCII(usuario_) ) % this.tMax);
         
+        int intento = 0;
+        while (this.tabla[indice].estado_ != estado.vacio) {
+            
+            if  ( this.tabla[indice].estado_ == estado.ocupado ) {
+                
+                if (this.tabla[indice].usuario_.getUsuario_().equalsIgnoreCase(usuario_) ) {
+                    return this.tabla[indice].usuario_;
+                }else {
+                    if (indice == 0 || indice == 1 ) { indice = 1; }
+                
+                    indice = ( indice + (indice * indice ) + intento ) % this.tMax;
+                    intento ++;
+                }
+            }
+        }
         
-        return new usuario("","");
+        return null;
     }
     
     
@@ -78,13 +95,22 @@ public class tablaHash {
         // generar nuevos valores
         this.tMax = this.buscarProximoPrimo(tMax + 1 );
         this.tabla = new celda[this.tMax];
+        this.factorCarga = 0.0;
+        this.usado = 0;
         
         // iniciar los valores
         for (int i = 0 ; i  < this.tMax ; i++) { this.tabla[i] = new celda(); }
         
         // insertar todos los valores anteriores en la nueva tabla
-        for (int i = 0 ; i < aux ; i ++ ) { this.insertar(aux_celda[i].usuario_.getUsuario_(), aux_celda[i].usuario_.getContrasena_()); }
-        
+        for (int i = 0 ; i < aux ; i ++ ) { 
+            
+            
+            if (aux_celda[i].estado_ == estado.ocupado) {
+                usuario us = aux_celda[i].usuario_;
+                this.insertar(us.getUsuario_(), us.getContrasena_());
+            }
+            
+        }
     }
     
     public int buscarProximoPrimo (int i) {
@@ -149,15 +175,17 @@ public class tablaHash {
         // obtiene el índice del elemento a buscar
         int indice = ((llave ) % this.tMax);
         
+        int intento = 0;
         while (true) {
             
             if (this.tabla[indice].estado_ == estado.vacio || this.tabla[indice].estado_ == estado.borrado ) {
                 return indice;
             }else{
                 
-                if (indice == 0 || indice == 1 ) { indice = 2; }
+                if (indice == 0 || indice == 1 ) { indice = 1; }
                 
-                indice = ( (indice * indice )  ) % this.tMax;
+                indice = ( indice + (indice * indice ) + intento ) % this.tMax;
+                intento ++;
             }
         }
         

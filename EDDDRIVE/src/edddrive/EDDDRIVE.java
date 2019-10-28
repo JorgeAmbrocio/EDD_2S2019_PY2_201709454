@@ -16,10 +16,25 @@ public class EDDDRIVE {
     
     public static void main(String[] args)  {
         // TODO code application logic here
+        
+        
+        
         tablaHash tb = new tablaHash();
         
-        tb.getSumaASCII("esta");
-        
+        tb.insertar("david", "contrasena");
+        tb.insertar("ricardo", "contrasena");
+        tb.insertar("dato", "contrasena");
+        tb.insertar("rica", "contrasena");
+        tb.insertar("karla", "contrasena");
+        tb.insertar("sara", "contrasena");
+        tb.insertar("sarala", "contrasena");
+        tb.insertar("asfd", "contrasena");
+        tb.insertar("ricawertrdo", "contrasena");
+        tb.insertar("daqretto", "contrasena");
+        tb.insertar("rick6iuja", "contrasena");
+        tb.insertar("karerla", "contrasena");
+        tb.insertar("sarerga", "contrasena");
+        tb.insertar("sarahyula", "contrasena");
     }
     
     
