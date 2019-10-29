@@ -5,6 +5,7 @@
  */
 package edddrive;
 import edddrive.estructuras.*;
+import edddrive.estructuras.matrizAdyacente.nodo;
 import edddrive.classes.usuario;
 import javax.swing.JOptionPane;
 
@@ -18,30 +19,24 @@ public class EDDDRIVE {
     public static void main(String[] args)  {
         // TODO code application logic here
         
+        matrizAdyacente mt = new matrizAdyacente();
         
         
-        tablaHash tb = new tablaHash();
         
-        tb.insertar("david", "contrasena");
-        tb.insertar("ricardo", "contrasena");
-        tb.insertar("dato", "contrasena");
-        tb.insertar("rica", "contrasena");
-        tb.insertar("karla", "contrasena");
-        tb.insertar("sara", "contrasena");
-        tb.insertar("sarala", "contrasena");
-        tb.insertar("asfd", "contrasena");
-        tb.insertar("ricawertrdo", "contrasena");
-        tb.insertar("daqretto", "contrasena");
-        tb.insertar("rick6iuja", "contrasena");
-        tb.insertar("karerla", "contrasena");
-        tb.insertar("sarerga", "contrasena");
-        tb.insertar("sarahyula", "contrasena");
         
-        usuario us = tb.buscar("dato");
+        System.out.println(mt.existeX(5));
+        System.out.println(mt.existeY(5));
         
-        tb.eliminar("dato");
+        mt.crearX(5);
+        mt.crearY(5);
+      
+        System.out.println(mt.existeX(5));
+        System.out.println(mt.existeY(5));
         
-        us = tb.buscar("dato");
+        mt.insertar("5_5", 5, 5);
+        mt.insertar("0_3", 0, 3);
+        mt.insertar("0_0", 0, 0);
+        
         
     }
     
