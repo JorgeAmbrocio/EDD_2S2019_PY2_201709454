@@ -5,6 +5,8 @@
  */
 package edddrive.estructuras;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author David Ventura
@@ -15,82 +17,127 @@ public class listaDobleEnlazada {
         nodo anterior;
         
         String dato ;
-        Object dato_;
+        carpeta dato_;
 
-        public nodo(String dato, Object dato_) {
+        public nodo(String dato, carpeta dato_) {
             this.dato = dato;
             this.dato_ = dato_;
+            this.dato_.nombre=dato;
             
             this.siguiente =null;
             this.anterior = null;
-            
         }
 
-        public nodo() {
-        }
-        
-        
-        
-        
+        public nodo() {}
     }
     
     nodo inicio ;
+    nodo final_;
     int largo = 1;
-    public void insertarInicio(String dato , Object dato_) {
+    public void insertarFinal(String dato , carpeta dato_) {
+        
+        
+        // verifica que no exista el dato
+        carpeta tmp = this.getDato(dato);
+        
+        if (tmp != null) {
+            JOptionPane.showMessageDialog(null, "Esta carpeta ya existe. :-)", "Soy un título" , JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         
         // crear temporal para recorrer la lista actual
         if (this.inicio == null){
             // si el inicio es nulo, se inserta el nodo en el inicio
-            this.inicio = new nodo(dato, dato_);
-            
+            nodo nuevo=new nodo(dato,dato_);
+            this.inicio = nuevo;
+            this.final_ = nuevo;
+            this.final_.anterior = this.inicio;
         }else {
-            // recorrer lista hasta que el nodo siguiente sea nulo o que el valor del nodo sea inferior
-            if (dato.compareTo(this.inicio.dato) < 0) {
-                // dato es antes al dato del inicio
-                // insertar en el inicio
-                nodo nd = new nodo (dato, dato_);
-                
-                // conectar el nodo
-                nd.siguiente = this.inicio;
-                
-                // conectar la lista al nodo
-                this.inicio.anterior = nd;
-                
-                // apuntar inicio a nuevo nodo
-                this.inicio = nd;
-                
-            }else {
-                // encontrar posición par ainsertar los datos
-                nodo tmp = this.inicio;
-                
-                while (tmp.siguiente != null && tmp.siguiente.dato.compareToIgnoreCase(dato) < 0 ) {
-                    
-                    tmp = tmp.siguiente;
-                }
-                
-                // ya estamos en el nodo previo a la inserción
-                nodo nd = new nodo (dato, dato_);
-                // conectar nodo a la lista
-                nd.anterior = tmp;
-                nd.siguiente =tmp.siguiente;
-                
-                // conectar lista a nodo
-                if (tmp.siguiente == null) {
-                    // si el siguiente es nulo, solo se conecta el siguiente del temporal
-                    tmp.siguiente =nd;
-                    
-                }else {
-                    // se conecta siguiete de temporal y anteiror de siguiente temporal
-                    tmp.siguiente.anterior = nd;
-                    tmp.siguiente = nd;
-                }
-                
-                
-            }
+            
+            nodo nuevo = new nodo (dato, dato_) ;
+            
+            // conectar nuevo nodo a la lista
+            nuevo.anterior = this.final_;
+            
+            // conecatar lista a nodo
+            this.final_.siguiente = nuevo;
+            
+            // apuntar final a nuevo
+            this.final_  = nuevo;
+            
+            
+            
         }
         
         largo += 1;
     }
+    
+    public void reemplazarDato (String dato , carpeta dato_) {
+        int option = JOptionPane.showConfirmDialog(null, "Esta carpeta ya existe, ¿deseas reemplazarla?");
+                            
+        if (option == 0) {
+            // sí se procede con la inserción
+            // eliminar el nodo anterior
+            this.eliminarDato(dato);
+            this.insertarFinal(dato, dato_);
+            return;
+
+        }else {
+            // no se procede con la inserción
+            return;
+        }
+        
+        
+    }
+    
+    public carpeta getDato (String dato) {
+        // crear puntero
+        nodo tmp = this.inicio;
+        
+        while (tmp != null) {
+            if (tmp.dato_.nombre.equalsIgnoreCase(dato)) {
+                // encontramos la carpeta
+                return tmp.dato_;
+            }
+            
+            tmp  = tmp.siguiente;
+        }
+        
+        return null;
+    }
+    
+    public void eliminarDato (String dato) {
+        // crear puntero
+        nodo tmp = this.inicio;
+        
+        if (this.inicio.dato.equalsIgnoreCase(dato)) {
+            // si el inicio es igual al dato
+            // apuntar inicio al siguiente
+            this.inicio= this.inicio.siguiente;
+            return;
+        }
+        
+        
+        while (tmp != null) {
+            if (tmp.dato_.nombre.equalsIgnoreCase(dato)) {
+                // encontramos la carpeta
+                // eliminar nodo
+                // estamos en el nodo a eliminar
+                
+                if (tmp.siguiente != null) {
+                    tmp.siguiente.anterior = tmp.anterior;
+                }
+                
+                if (tmp.anterior != null) {
+                    tmp.anterior.siguiente = tmp.siguiente;
+                }
+                return;
+            }
+            
+            tmp = tmp.siguiente;
+        }
+    }
+    
     
     
 }

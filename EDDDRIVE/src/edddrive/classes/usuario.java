@@ -10,17 +10,17 @@ package edddrive.classes;
  * @author dventura
  */
 
-import edddrive.estructuras.matrizAdyacente;
-
+import edddrive.estructuras.*;
 public class usuario {
     
     private String usuario_;
     private String contrasena_;
-    
+    private carpeta directorio;
     public usuario (String usuario__ , String contrasena__) {
         this.usuario_ = usuario__;
         this.contrasena_ = contrasena__;
-        
+        this.directorio  = new carpeta();
+        this.directorio.nombre = "/";
         
         
     }

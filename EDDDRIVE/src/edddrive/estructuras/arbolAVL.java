@@ -49,57 +49,6 @@ public class arbolAVL {
         this.raiz = null;
     }
     
-    public void insertar__(String dato, Object dato_){
-        if (this.raiz == null ){
-            // arbol es null, se inserta el dato en la raíz
-            this.raiz = new nodo(dato, dato_);
-            this.raiz.equilibrio = 0;
-            
-        }else {
-            // verificar en qué parte del árbol se insertan los datos 
-            this.insertar___(dato, dato_ , this.raiz);
-        }
-    }
-    
-
-    public void insertar___ (String dato , Object dato_ , nodo arbol){
-        if (dato.compareToIgnoreCase(arbol.cont) > 0 ){
-            // dato es mayor que el contenido actual del nodo
-            // insertar a la derecha
-            
-            if (arbol.derecha == null) {
-                // si el hijo derecha es nulo,se inserta en esta posición
-                arbol.derecha = new nodo(dato, dato_);
-                arbol.derecha.padre = arbol;
-                
-                // inspeccionar la inserción
-                
-                
-            }else {
-                this.insertar___(dato, dato_, arbol.derecha);
-            }
-            
-        }else if (dato.compareToIgnoreCase(arbol.cont) < 0 ) {
-            // dato es menor que el contenido actual del nodo
-            // insertar a la izquierda
-            
-            if (arbol.izquierda == null) {
-                // si el hijo es nulo, se inserta 
-                arbol.izquierda = new nodo (dato , dato_);
-                arbol.izquierda.padre = arbol;
-                
-                // inspeccionar insercion
-                
-            }else {
-                
-                this.insertar___(dato, dato_, arbol.izquierda);
-            }
-            
-        }else {
-            JOptionPane.showMessageDialog(null, "Este dato ( " +  dato + " ) ya ha sido insertado. :-)");
-        }
-        
-    }
     
     public nodo buscar (String dato , nodo arbol) {
         
@@ -276,6 +225,87 @@ public class arbolAVL {
     }
     
     
+    public void eliminar (String dato, nodo arbol) {
+        
+        
+        if (arbol == null ) {
+            
+        }else if (arbol.cont.equals(dato)) {
+            // encontramos el nodo, hay que eliminar
+            this.eliminarNodo(arbol);
+        }else if  (dato.compareToIgnoreCase(arbol.cont) > 0) {
+            // dato es mayor al valor del nodo actual
+            /// buscar a la derecha
+            this.buscar(dato, arbol.derecha);
+        }else if (dato.compareToIgnoreCase(arbol.cont) < 0) {
+            // dato es menor al valor del nodo actual
+            // buscar a la izquierda
+            this.buscar(dato, arbol.izquierda);
+        }
+        
+    
+    }
+    
+    public void eliminarNodo (nodo nd) {
+        // tres opciones
+        // no tien hijos
+        if (nd.derecha == null && nd.izquierda == null) {
+            
+            // verifica si es hijo derecha o izquierda
+            if (nd.padre != null && nd.padre.derecha == nd) {
+                // es el hijo derecha, se elimina el apuntador al nodo
+                nd.padre.derecha = null;
+            }else {
+                nd.padre.izquierda = null;
+            }
+            
+        }else if (nd.derecha != null && nd.izquierda == null) {
+            // tiene hijo derecha
+            
+        }else if (nd.derecha == null && nd.izquierda != null) {
+            // tiene hijo izquierda
+            
+        }else if (nd.derecha != null && nd.izquierda != null) {
+            // tiene dos hijos
+            
+            // obtener el menor izquierda
+            nodo menor = this.menorIzquierda(nd.derecha);
+            
+            // reemplazar el valor del nodo a eliminar con el valor del menos izquierda
+            nd.cont = menor.cont;
+            nd.contenido = menor.contenido;
+            
+            // elimianr el nodo menor izquierda
+            this.eliminarNodo(menor); 
+        }
+        
+        
+    }
+    
+    public nodo menorIzquierda (nodo nd) {
+        // busca el dato menor de izquierda
+        if (nd.izquierda != null) {
+            return this.menorIzquierda(nd);
+        }else {
+            return nd;
+        }
+    }
+    
+    public void reemplazarNodo (nodo anterior, nodo nuevo) {
+        if (anterior.padre != null) {
+            if (anterior.padre.izquierda != null && anterior.padre.izquierda.cont.equalsIgnoreCase(anterior.cont)) {
+                // es el hijo izquierda
+                anterior.padre.izquierda = nuevo;
+            }else {
+                anterior.padre.derecha = nuevo;
+            }
+        }
+        
+        if (nuevo != null) {
+            nuevo.padre = anterior.padre;
+        }
+        
+    }
     
     // recorridos
     
@@ -284,6 +314,59 @@ public class arbolAVL {
     
 }
 
+
+/*public void insertar__(String dato, Object dato_){
+        if (this.raiz == null ){
+            // arbol es null, se inserta el dato en la raíz
+            this.raiz = new nodo(dato, dato_);
+            this.raiz.equilibrio = 0;
+            
+        }else {
+            // verificar en qué parte del árbol se insertan los datos 
+            this.insertar___(dato, dato_ , this.raiz);
+        }
+    }
+    
+
+    public void insertar___ (String dato , Object dato_ , nodo arbol){
+        if (dato.compareToIgnoreCase(arbol.cont) > 0 ){
+            // dato es mayor que el contenido actual del nodo
+            // insertar a la derecha
+            
+            if (arbol.derecha == null) {
+                // si el hijo derecha es nulo,se inserta en esta posición
+                arbol.derecha = new nodo(dato, dato_);
+                arbol.derecha.padre = arbol;
+                
+                // inspeccionar la inserción
+                
+                
+            }else {
+                this.insertar___(dato, dato_, arbol.derecha);
+            }
+            
+        }else if (dato.compareToIgnoreCase(arbol.cont) < 0 ) {
+            // dato es menor que el contenido actual del nodo
+            // insertar a la izquierda
+            
+            if (arbol.izquierda == null) {
+                // si el hijo es nulo, se inserta 
+                arbol.izquierda = new nodo (dato , dato_);
+                arbol.izquierda.padre = arbol;
+                
+                // inspeccionar insercion
+                
+            }else {
+                
+                this.insertar___(dato, dato_, arbol.izquierda);
+            }
+            
+        }else {
+            JOptionPane.showMessageDialog(null, "Este dato ( " +  dato + " ) ya ha sido insertado. :-)");
+        }
+        
+    }
+    */
 
     /* // rotar simple izquieda 
     public void rotarIzquierda (nodo arbol) {
