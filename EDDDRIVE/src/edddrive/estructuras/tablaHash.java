@@ -38,7 +38,7 @@ public class tablaHash {
     }
     
     
-    public void insertar (String usuario_, String contrasena_) {
+    public void insertar (String usuario_, String contrasena_, boolean encriptar) {
         
         // verifica si aún tenemos espacio para insertar el dato
         if (this.factorCarga  > 0.75) {
@@ -50,6 +50,13 @@ public class tablaHash {
         
         // calcular indice
         int indice = this.getHash(llave);
+        
+        // encriptar si es necesario
+        if (encriptar) {
+            // encriptar
+            contrasena_ = this.sha256(contrasena_);
+        }
+        
         
         // insertar el dato
         this.tabla[indice].usuario_ = new usuario (usuario_ , contrasena_) ;
@@ -77,7 +84,6 @@ public class tablaHash {
                 
                     indice = ( indice + (indice * indice ) + intento ) % this.tMax;
                     intento ++;
-                    
                 }
             }else if (this.tabla[indice].estado_ == estado.borrado) {
                 if (indice == 0 || indice == 1 ) { indice = 1; }
@@ -140,7 +146,7 @@ public class tablaHash {
             
             if (aux_celda[i].estado_ == estado.ocupado) {
                 usuario us = aux_celda[i].usuario_;
-                this.insertar(us.getUsuario_(), us.getContrasena_());
+                this.insertar(us.getUsuario_(), us.getContrasena_(), false);
             }
             
         }

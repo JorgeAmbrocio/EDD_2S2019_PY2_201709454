@@ -34,7 +34,7 @@ public class carpeta {
     
     
     public void eliminarArchivo (String nombre) {
-        
+        this.archivos.eliminar(nombre);
     }
     
     public void eliminarCarpeta(String nombre){

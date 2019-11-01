@@ -150,6 +150,7 @@ public class arbolAVL {
             if (padre.izquierda == null) {
                 // si padre izquierda está vacío, insertar en esa posción
                 padre.izquierda = nuevo;
+                nuevo.padre = padre;
             }else {
                 // si padre.izquierda no es vacío
                 padre.izquierda = this.insertarAVL(nuevo, padre.izquierda);
@@ -177,6 +178,7 @@ public class arbolAVL {
             if (padre.derecha == null) {
                 // nodo vacío, insertar en esta posición
                 padre.derecha = nuevo;
+                nuevo.padre = padre;
             }else {
                 // nodo no es vacío, imandar a insertar en los hijos de padre.deracha
                 padre.derecha = this.insertarAVL(nuevo, padre.derecha);
@@ -225,7 +227,11 @@ public class arbolAVL {
     }
     
     
-    public void eliminar (String dato, nodo arbol) {
+    public void eliminar (String dato) {
+        this.eliminar_(dato, this.raiz);
+    }
+    
+    public void eliminar_ (String dato, nodo arbol) {
         
         
         if (arbol == null ) {
@@ -236,12 +242,13 @@ public class arbolAVL {
         }else if  (dato.compareToIgnoreCase(arbol.cont) > 0) {
             // dato es mayor al valor del nodo actual
             /// buscar a la derecha
-            this.buscar(dato, arbol.derecha);
+            this.eliminar_(dato, arbol.derecha);
         }else if (dato.compareToIgnoreCase(arbol.cont) < 0) {
             // dato es menor al valor del nodo actual
             // buscar a la izquierda
-            this.buscar(dato, arbol.izquierda);
+            this.eliminar_(dato, arbol.izquierda);
         }
+        
         
     
     }
@@ -261,10 +268,10 @@ public class arbolAVL {
             
         }else if (nd.derecha != null && nd.izquierda == null) {
             // tiene hijo derecha
-            
+            this.reemplazarNodo(nd, nd.derecha);
         }else if (nd.derecha == null && nd.izquierda != null) {
             // tiene hijo izquierda
-            
+            this.reemplazarNodo(nd, nd.izquierda);
         }else if (nd.derecha != null && nd.izquierda != null) {
             // tiene dos hijos
             
