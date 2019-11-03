@@ -13,15 +13,16 @@ package edddrive.estructuras;
 
 
 
+import edddrive.classes.archivo;
 import javax.swing.JOptionPane ;
 public class arbolAVL {
     public class nodo  {
-        nodo padre;
-        nodo derecha;
-        nodo izquierda;
+        public  nodo padre;
+        public nodo derecha;
+        public nodo izquierda;
         
-        String cont;
-        Object contenido;
+        public String cont;
+        public Object contenido;
         
         int altura ;
         int equilibrio;
@@ -42,7 +43,7 @@ public class arbolAVL {
         
     }
     
-    nodo raiz  ;
+    public nodo raiz  ;
     int cantidad ;
     
     public arbolAVL () {
@@ -69,6 +70,20 @@ public class arbolAVL {
         }
         
         return null;
+    }
+    
+    
+    // modificar el contenido de un nodo
+    public void modificar (String dato , String contenido) {
+        nodo nd = this.buscar(dato, this.raiz);
+        
+        if (nd != null) {
+            // NODO SÍ EXISTE
+            archivo tmp = (archivo) nd.contenido;
+            tmp.contenido_ = contenido;
+            JOptionPane.showMessageDialog(null, "El archivo ha sido modificado con éxito.");
+        }
+        
     }
     
     // obtener el fator de equilibrio
@@ -265,6 +280,8 @@ public class arbolAVL {
             }else {
                 nd.padre.izquierda = null;
             }
+            
+            JOptionPane.showMessageDialog(null, "El elemento ha sido eliminado con éxito.", "Titulo", JOptionPane.INFORMATION_MESSAGE);
             
         }else if (nd.derecha != null && nd.izquierda == null) {
             // tiene hijo derecha

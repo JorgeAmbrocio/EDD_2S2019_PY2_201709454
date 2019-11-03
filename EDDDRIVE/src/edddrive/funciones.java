@@ -12,11 +12,16 @@ package edddrive;
 import edddrive.EDDDRIVE.*;
 import edddrive.EDDDRIVE;
 import edddrive.classes.*;
+import edddrive.estructuras.arbolAVL.nodo;
 import edddrive.estructuras.*;
 import edddrive.formularios.*;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 public class funciones {
+    
+    public usuario usuarioActual;
+    public carpeta carpetaActual;
     
     public void cargaMasivaUsuarios() {
         
@@ -37,6 +42,9 @@ public class funciones {
             // verificar la contrasena
             if (us.getContrasena_().equalsIgnoreCase(contrasena)) {
                 // con iguales
+                JOptionPane.showMessageDialog(null, "Acceso exitoso.", ":-)", JOptionPane.INFORMATION_MESSAGE);
+                this.usuarioActual  = us;
+                this.carpetaActual = us.directorio;
                 return true;
             }else {
                 // no son iguales
@@ -48,5 +56,112 @@ public class funciones {
         return false;
     }
     
+    public void RegistrarUsuario (String usuario , String contrasena) {
+        
+        // valida la contraseña
+        if (contrasena.length() < 8) {
+            // contrasena muy corta
+            JOptionPane.showMessageDialog(null, "Tu contraseña debe poseer al menos 8 caracteres.", "Error", JOptionPane.ERROR_MESSAGE);
+            return ;
+        }
+        
+        // ingresa el usuario
+        edddrive.EDDDRIVE.usuarios.insertar(usuario, contrasena, true);
+        
+        JOptionPane.showMessageDialog(null, "Registro exitoso, regresa al formualrio de ingreso para iniciar sesión.", ":-)", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void setUsuario  (usuario us){
+        this.usuarioActual = us;
+    }
+    
+    public void cargarCarpeta () {
+        // limpia el panel 
+        JScrollPane jsp = edddrive.EDDDRIVE.fmrInicio_.getPanel(0);
+        jsp.removeAll();
+        
+        JScrollPane jsp1 = edddrive.EDDDRIVE.fmrInicio_.getPanel(1);
+        jsp.removeAll();
+        
+        // inserta el nuevo panel
+        int [] nn = {0,0};
+        this.cargaCarpeta_(jsp, this.usuarioActual.directorio.archivos.raiz, nn);
+        
+        this.cargaCarpeta__(jsp1, this.carpetaActual.carpetas);
+        jsp1.repaint();
+        jsp.repaint();
+    }
+    
+    public int[] cargaCarpeta_ (JScrollPane jsp , arbolAVL.nodo nd, int [] xy) {
+        
+        if (nd ==null) {
+            // no se puede añadir nada más
+            
+        }else {
+            // verificar si tiene hijos
+            if (nd.izquierda != null) {
+                xy = this.cargaCarpeta_(jsp, nd.izquierda, xy);
+                
+                xy[0] += 120;
+
+                if (xy[0] >= 900) {
+                    xy[0] = 0 ; xy[1] += 60;
+                }
+                
+            }
+            
+            archivo ar = (archivo) nd.contenido;
+            ar.setLocation(xy[0],xy[1]);
+            jsp.add((archivo) nd.contenido);
+            
+            
+            
+            if (nd.derecha != null) {
+                
+                xy[0] += 120;
+
+                if (xy[0] >= 900) {
+                    xy[0] = 0 ; xy[1] += 60;
+                }
+                
+                
+                xy = this.cargaCarpeta_(jsp, nd.derecha, xy);
+                
+                
+            }
+            
+            
+            
+        }
+        
+        return xy;
+        
+    }
+    
+    
+    public void cargaCarpeta__ (JScrollPane jsp, listaDobleEnlazada lde) {
+        
+        // crear coordenadas iniciales
+        int x = 0 ; int y = 0;
+        
+        listaDobleEnlazada.nodo tmp  = lde.inicio ;
+        
+        // recorre hasta en contrar el nodo nulo o final
+        while  (tmp != null) {
+            // insetar en el jscroll pane
+            tmp.dato_.setLocation(x, y);
+            jsp.add(tmp.dato_);
+            x += 120;
+            
+            if (x > 900) {
+                x = 0 ; y += 60;
+            }
+            
+            tmp = tmp.siguiente;
+        }
+        
+        
+        
+    }
     
 }

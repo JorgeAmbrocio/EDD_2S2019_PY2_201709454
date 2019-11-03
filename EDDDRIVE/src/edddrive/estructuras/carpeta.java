@@ -6,12 +6,16 @@
 package edddrive.estructuras;
 
 import edddrive.classes.archivo;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 /**
  *
  * @author David Ventura
  */
-public class carpeta {
+
+public class carpeta extends JButton implements ActionListener {
     public String nombre;
     public arbolAVL archivos;
     public listaDobleEnlazada carpetas;
@@ -19,17 +23,25 @@ public class carpeta {
     public carpeta () {
         this.archivos = new arbolAVL();
         this.carpetas  = new listaDobleEnlazada();
+        
+        this.setText(nombre);
+        this.setSize(120,60);
     }
     
     public void crearCarpeta (String nombre_) {
         carpeta tmp = new carpeta();
         tmp.nombre = nombre_;
+        tmp.setText(nombre_);
         this.carpetas.insertarFinal(nombre_, tmp);
     }
     
-    public void crearArchivo (String nombre, String extension, String contenido) {
-        archivo tmp = new archivo(nombre, extension , contenido);
-        this.archivos.insertar(nombre, tmp);
+    public void crearArchivo (String nombre,  String contenido) {
+        archivo tmp = new archivo(nombre,  contenido);
+        this.archivos.insertar(nombre , tmp);
+    }
+    
+    public void modificarArchivo (String nombre,  String contenido) {
+        
     }
     
     
@@ -39,6 +51,11 @@ public class carpeta {
     
     public void eliminarCarpeta(String nombre){
         this.carpetas.eliminarDato(nombre);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

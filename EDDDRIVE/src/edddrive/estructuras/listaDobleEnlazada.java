@@ -13,11 +13,11 @@ import javax.swing.JOptionPane;
  */
 public class listaDobleEnlazada {
     public class nodo {
-        nodo siguiente ;
-        nodo anterior;
+        public nodo siguiente ;
+        public nodo anterior;
         
-        String dato ;
-        carpeta dato_;
+        public String dato ;
+        public carpeta dato_;
 
         public nodo(String dato, carpeta dato_) {
             this.dato = dato;
@@ -31,9 +31,10 @@ public class listaDobleEnlazada {
         public nodo() {}
     }
     
-    nodo inicio ;
-    nodo final_;
-    int largo = 1;
+    public nodo inicio ;
+    public nodo final_;
+    public int largo = 1;
+
     public void insertarFinal(String dato , carpeta dato_) {
         
         

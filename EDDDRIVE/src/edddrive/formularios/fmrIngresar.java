@@ -42,6 +42,7 @@ public class fmrIngresar extends javax.swing.JFrame {
         jLabel3.setText("USUARIO");
 
         txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUsuario.setText("admin");
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel4.setText("CONTRASEÑA");
@@ -61,6 +62,9 @@ public class fmrIngresar extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        txtContrasena.setText("admin");
+        txtContrasena.setToolTipText("");
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -116,12 +120,16 @@ public class fmrIngresar extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-        
-        
+        if (edddrive.EDDDRIVE.func.Ingresar(this.txtUsuario.getText(), this.txtContrasena.getText())) {
+            // sí permite el acceso
+            edddrive.EDDDRIVE.fmrIngresar_.hide();
+            edddrive.EDDDRIVE.fmrInicio_.show();
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        edddrive.EDDDRIVE.fmrRegistro_.show();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
