@@ -15,13 +15,25 @@ import edddrive.classes.*;
 import edddrive.estructuras.arbolAVL.nodo;
 import edddrive.estructuras.*;
 import edddrive.formularios.*;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 public class funciones {
     
+    public enum reportes {
+        tablaHash, grafo, matrizAdyacente, arbolAVL;
+    }
+    
     public usuario usuarioActual;
     public carpeta carpetaActual;
+    public String rutaReportes;
+    
+    public funciones() {
+        this.rutaReportes ="C:/arte/Report/";
+    }
+    
     
     public void cargaMasivaUsuarios() {
         
@@ -163,5 +175,46 @@ public class funciones {
         
         
     }
+    
+    public void mostrarImagen (reportes rp) {
+        
+        
+        if (null != rp) switch (rp) {
+            case arbolAVL:
+                
+                this.carpetaActual.archivos.CrearReporte(1);
+                
+                try {
+                    String comando = "dot " + this.rutaReportes + "vista_arbol.txt -o " + this.rutaReportes + "vista_arbol.png -Tpng";
+                    Runtime.getRuntime().exec(comando);
+                } catch (Exception e) {}
+                
+                
+                Imagen img = new Imagen(this.rutaReportes + "vista_arbol.png");
+                edddrive.EDDDRIVE.fmrVisor_.removeAll();
+                edddrive.EDDDRIVE.fmrVisor_.add(img);
+                edddrive.EDDDRIVE.fmrVisor_.repaint();
+                
+                edddrive.EDDDRIVE.fmrVisor_.show();
+                
+                break;
+            case grafo:
+                
+                break;
+            case matrizAdyacente:
+                
+                break;
+            case tablaHash:
+                
+                break;
+            default:
+                break;
+        }
+        
+        
+        
+    }
+    
+    
     
 }

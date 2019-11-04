@@ -20,11 +20,15 @@ public class EDDDRIVE {
     public static fmrIngresar fmrIngresar_;
     public static fmrRegistro fmrRegistro_;
     public static fmrInicio fmrInicio_;
+    public static fmrVisor fmrVisor_ ;
     
     public static funciones func ;
     public static procedimientos proc;
     public static void main(String[] args)  {
         // TODO code application logic here
+        
+        
+        
         
         // iniciar variable que lleva la lógica de los procedimientos básicos
         func = new funciones();
@@ -34,6 +38,7 @@ public class EDDDRIVE {
         fmrIngresar_ = new fmrIngresar (); fmrIngresar_.setLocationRelativeTo(null);
         fmrRegistro_= new fmrRegistro(); fmrRegistro_.setLocationRelativeTo(null);
         fmrInicio_ = new fmrInicio(); fmrInicio_.setLocationRelativeTo(null);
+        fmrVisor_ = new fmrVisor() ;
         
         // variables que contienen la raíz de los objetos necesarios
         usuarios = new tablaHash ();
@@ -77,6 +82,7 @@ public class EDDDRIVE {
         us.directorio.crearCarpeta("n");
         us.directorio.crearCarpeta("o");
         us.directorio.crearCarpeta("p");
+        
         
         fmrIngresar_.show();
         

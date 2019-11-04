@@ -14,6 +14,8 @@ package edddrive.estructuras;
 
 
 import edddrive.classes.archivo;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import javax.swing.JOptionPane ;
 public class arbolAVL {
     public class nodo  {
@@ -332,7 +334,112 @@ public class arbolAVL {
     }
     
     // recorridos
+    public void CrearReporte (int reporte) {
+        String ruta = "";
     
+        String contenido = "";
+        
+        contenido += "digraph G {\n";
+        
+        
+        contenido += "node[shape = record];";
+        
+        switch (reporte){
+            case 1:
+                // vista arbol
+                
+                contenido += this.getContenido_Arbol(this.raiz);
+                break;
+                
+            case 2:
+                // vista pre
+                contenido += this.getContenido_Preorder(this.raiz);
+                break;
+                
+            case 3 :
+                // vista pos
+                contenido += this.getContenido_Posorder(this.raiz);
+                break;
+                
+                
+            case 4:
+                // vista in
+                contenido += this.getContenido_Inorder(this.raiz);
+                break;
+                
+            default:
+                
+                break;
+        }
+        
+        
+        contenido += "\n}";
+        
+        
+        FileWriter archivo ;
+        PrintWriter pw;
+        
+        try {
+            archivo = new FileWriter (edddrive.EDDDRIVE.func.rutaReportes + "vista_arbol.txt") ;
+            
+            pw = new PrintWriter(archivo);
+            pw.print(contenido);
+            
+            archivo.close();
+            
+        } catch (Exception e){}
+        
+        
+        
+    }
+    
+    public String getContenido_Arbol (nodo arbol) {
+        
+        String contenido = "";
+        
+        if (arbol != null) {
+            
+            archivo cp = (archivo) arbol.contenido;
+            
+            
+            contenido += "\"" + arbol.cont + "\"[label=\"<f0> | <f1> Archivo:" + cp.nombre_ +  " Contenido:"  + cp.contenido_ + " Equilibrio:" + arbol.equilibrio + " Tiempo:" + cp.estampaTiempo_  +  " | <f2>\"];\n" ;
+            
+            
+            if (arbol.izquierda != null) {
+                
+                contenido += "\"" +arbol.cont + "\":f0 -> \"" + arbol.izquierda.cont  + "\":f1\n";
+                
+                contenido += this.getContenido_Arbol(arbol.izquierda);
+            }
+            
+            if (arbol.derecha != null) {
+                
+                contenido += "\"" + arbol.cont + "\":f2 -> \"" + arbol.derecha.cont + "\":f1\n";
+                contenido += this.getContenido_Arbol(arbol.derecha);
+            }
+        }
+        
+        return contenido;
+    }
+    
+    public String getContenido_Preorder (nodo arbol) {
+        String contenido = "";
+        
+        contenido += "";
+        
+        
+        return contenido;
+    }
+    public String getContenido_Posorder (nodo arbol) {
+        String contenido = "";
+        
+        return contenido;
+    }
+    public String getContenido_Inorder (nodo arbol) {
+        String contenido = "";
+        
+        return contenido;
+    }
     
     
     

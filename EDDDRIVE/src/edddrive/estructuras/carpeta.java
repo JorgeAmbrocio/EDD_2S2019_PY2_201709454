@@ -17,6 +17,7 @@ import javax.swing.JButton;
 
 public class carpeta extends JButton implements ActionListener {
     public String nombre;
+    public carpeta padre;
     public arbolAVL archivos;
     public listaDobleEnlazada carpetas;
     
@@ -32,6 +33,7 @@ public class carpeta extends JButton implements ActionListener {
         carpeta tmp = new carpeta();
         tmp.nombre = nombre_;
         tmp.setText(nombre_);
+        tmp.padre = this;
         this.carpetas.insertarFinal(nombre_, tmp);
     }
     
