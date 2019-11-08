@@ -24,6 +24,8 @@ public class EDDDRIVE {
     
     public static funciones func ;
     public static procedimientos proc;
+    public static pila bitacora;
+    
     public static void main(String[] args)  {
         // TODO code application logic here
         
@@ -33,6 +35,7 @@ public class EDDDRIVE {
         // iniciar variable que lleva la lógica de los procedimientos básicos
         func = new funciones();
         proc = new procedimientos();
+        bitacora = new pila();
         
         // iniciar los formularios
         fmrIngresar_ = new fmrIngresar (); fmrIngresar_.setLocationRelativeTo(null);

@@ -8,7 +8,10 @@ package edddrive.estructuras;
 import edddrive.classes.archivo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,6 +61,63 @@ public class carpeta extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    public void crearGrafico () {
+        String cont = "";
+        
+        
+        cont += "digraph {\n";
+        
+        cont += this.getContenido(this);
+        
+        cont += "\n}";
+        
+        FileWriter archivo;
+        PrintWriter pw;
+        
+        try {
+            archivo =new FileWriter ("C:/arte/Report/vista_grafo.txt") ;
+            pw =new PrintWriter (archivo);
+            pw.print(cont);
+            archivo.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo crear el reporte Carpeta", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+    }
+    
+    public String getContenido (carpeta folder) {
+        
+        String cont = "";
+        
+        // verifica que el folder no sea nulo
+        
+        if  (folder != null) {
+            
+            // verifica que el flder tenga más folders
+            if (folder.carpetas != null) {
+                
+                // recorre todas las carpetas del folder
+                edddrive.estructuras.listaDobleEnlazada.nodo nd = folder.carpetas.inicio;
+                
+                while (nd !=null) {
+                    
+                    cont += "\"" +folder.nombre +  "\" -> \"" + nd.dato_.nombre  + "\"\n";
+                    
+                    cont += this.getContenido(nd.dato_);
+                    
+                    nd = nd.siguiente;
+                }
+            }
+        }else {
+            
+        }
+        
+        
+        return cont;
     }
     
     

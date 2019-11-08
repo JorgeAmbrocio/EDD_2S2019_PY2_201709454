@@ -25,11 +25,12 @@ import javax.swing.JScrollPane;
 public class funciones {
     
     public enum reportes {
-        tablaHash, grafo, matrizAdyacente, arbolAVL;
+        tablaHash, grafo, matrizAdyacente, arbolAVL, pila;
     }
     
     public usuario usuarioActual;
     public carpeta carpetaActual;
+    
     public String rutaReportes;
     
     public funciones() {
@@ -189,15 +190,27 @@ public class funciones {
                 try {
                     String comando = "dot " + this.rutaReportes + "vista_arbol.txt -o " + this.rutaReportes + "vista_arbol.png -Tpng";
                     Runtime.getRuntime().exec(comando);
-                } catch (Exception e) {
-                    System.out.print("no se pudo crear imagen vista árbol");
+                }catch (Exception e) {
+                    JOptionPane.showMessageDialog(null , "No se pudo crear la imagen árbol");
                 }
                 
                 break;
             case grafo:
                 
+                this.carpetaActual.crearGrafico();
+                
+                try {
+                    String comando = "dot " + this.rutaReportes + "vista_grafo.txt -o " + this.rutaReportes + "vista_grafo.png -Tpng";
+                    Runtime.getRuntime().exec(comando);
+                }catch (Exception e) {
+                    JOptionPane.showMessageDialog(null , "No se pudo crear la imagen grafo");
+                }
+                
                 break;
             case matrizAdyacente:
+                
+                break;
+            case pila:
                 
                 break;
             case tablaHash:
@@ -207,8 +220,9 @@ public class funciones {
                 try {
                     String comando = "dot " + this.rutaReportes + "vista_hash.txt -o " + this.rutaReportes + "vista_hash.png -Tpng";
                     Runtime.getRuntime().exec(comando);
-                } catch (Exception w) { System.out.println("No se pudo crear imagen hash");}
-                
+                }catch (Exception e) {
+                    JOptionPane.showMessageDialog(null , "No se pudo crear la imagen tabla hash");
+                }
                 
                 break;
             default:

@@ -65,7 +65,7 @@ public class fmrVisor extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Hash");
+        jButton4.setText("Grafo");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -129,6 +129,9 @@ public class fmrVisor extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        Imagen img = new Imagen("C:/arte/Report/vista_grafo.png");
+        this.jsp1.setVisible(true);
+        this.jsp1.setViewportView(img);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

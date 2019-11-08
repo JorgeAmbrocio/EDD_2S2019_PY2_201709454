@@ -279,11 +279,18 @@ public class tablaHash {
                 cont += "   <td>nombre:" + edddrive.EDDDRIVE.usuarios.tabla[i].usuario_.getUsuario_() + " contraseña:" + edddrive.EDDDRIVE.usuarios.tabla[i].usuario_.getContrasena_() + "</td>\n";
 
                 cont += "</tr>\n";
+            }else {
+                cont += "<tr>\n";
+            
+                cont += "   <td>" + i + ").</td>\n";
+                cont += "   <td>" + "" + " " + "" + "</td>\n";
+
+                cont += "</tr>\n";
             }
             
         }
         
-        return ";";
+        return cont;
     }
     
     
