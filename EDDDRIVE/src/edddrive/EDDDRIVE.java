@@ -40,6 +40,8 @@ public class EDDDRIVE {
         fmrInicio_ = new fmrInicio(); fmrInicio_.setLocationRelativeTo(null);
         fmrVisor_ = new fmrVisor() ;
         
+        
+        
         // variables que contienen la raíz de los objetos necesarios
         usuarios = new tablaHash ();
         usuarios.insertar("admin", "admin", true);
@@ -84,6 +86,7 @@ public class EDDDRIVE {
         us.directorio.crearCarpeta("p");
         
         
+        //fmrVisor_.show();
         fmrIngresar_.show();
         
         

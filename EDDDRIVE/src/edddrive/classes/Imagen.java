@@ -8,11 +8,13 @@ package edddrive.classes;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -20,7 +22,12 @@ import javax.swing.JOptionPane;
  */
 public class Imagen extends javax.swing.JPanel {
     public String ruta; 
-    public Imagen(String ruta) { this.setSize(5000, 5000); this.ruta = ruta; }
+
+    public Imagen(String ruta) {
+        this.setSize(900, 900) ; 
+        this.setPreferredSize(new Dimension (10000,10000)) ; 
+        this.ruta = ruta; 
+    }
     
     
     public void paintComponent (Graphics grafico) {
@@ -29,11 +36,12 @@ public class Imagen extends javax.swing.JPanel {
         
         super.paintComponent(grafico);
         
-        File rutaImagen = new File ("C:/arte/Report/vista_arbol.png" );
+        File rutaImagen = new File (this.ruta );
         
         try {
             image = ImageIO.read(rutaImagen);
-            grafico.drawImage(image, 0, 0, 5000,5000, null);
+            grafico.drawImage(image,0, 0, null);
+            
             
         } catch(IOException e){
             JOptionPane.showMessageDialog(null, "No se puede encontrar la imagen", "ERROR", JOptionPane.ERROR_MESSAGE);

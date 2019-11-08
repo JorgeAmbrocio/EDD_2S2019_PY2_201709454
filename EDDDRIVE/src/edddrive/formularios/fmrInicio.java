@@ -106,7 +106,7 @@ public class fmrInicio extends javax.swing.JFrame {
 
         jButton5.setText("Crear");
 
-        btnReporte.setText("Reporte");
+        btnReporte.setText("Reportes");
         btnReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReporteActionPerformed(evt);
@@ -212,7 +212,10 @@ public class fmrInicio extends javax.swing.JFrame {
 
     private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
         // TODO add your handling code here:
-        edddrive.EDDDRIVE.func.mostrarImagen(funciones.reportes.arbolAVL);
+        //edddrive.EDDDRIVE.func.mostrarImagen(funciones.reportes.arbolAVL);
+        edddrive.EDDDRIVE.func.crearImagen(funciones.reportes.arbolAVL);
+        edddrive.EDDDRIVE.func.crearImagen(funciones.reportes.tablaHash);
+        edddrive.EDDDRIVE.fmrVisor_.show();
     }//GEN-LAST:event_btnReporteActionPerformed
 
     /**

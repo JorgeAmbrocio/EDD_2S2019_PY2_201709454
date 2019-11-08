@@ -7,7 +7,10 @@ package edddrive.estructuras;
 
 import java.security.MessageDigest;
 import edddrive.classes.usuario;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author dventura
@@ -230,5 +233,59 @@ public class tablaHash {
         
         
     }
+    
+    public void crearReporte() {
+        String cont= "";
+        
+        cont += "digraph G{\n";
+        
+        
+        cont += "tbl[\n";
+        
+        cont += "   shape=plaintext;\n";
+        cont += "   label=<\n";
+        cont += "       <table border='0' cellborder='1' color='blue' cellspacing='0'>\n";
+                        
+        cont += "           <tr><td>Indice</td><td>Datos</td></tr>\n";
+        
+        cont += this.getContenidoReporte();
+        
+        cont += "       </table>\n";
+        cont += "   >];\n";
+        cont += "\n}";
+        
+        FileWriter archivo;
+        PrintWriter pw ;
+        
+        try {
+            archivo = new FileWriter (edddrive.EDDDRIVE.func.rutaReportes + "vista_hash.txt") ;
+            pw = new PrintWriter (archivo);
+            pw.print(cont);
+            archivo.close();
+        } catch (Exception e) {JOptionPane.showMessageDialog(null, "No se ha escrito el contenido del reporte hash.", "Error", JOptionPane.ERROR_MESSAGE);}
+        
+    }
+    
+    public String getContenidoReporte () {
+        String cont = "";
+        
+        for (int i = 0 ; i < edddrive.EDDDRIVE.usuarios.tMax ; i ++) {
+            
+            
+            if (edddrive.EDDDRIVE.usuarios.tabla[i].estado_ == edddrive.estructuras.tablaHash.estado.ocupado) {
+                cont += "<tr>\n";
+            
+                cont += "   <td>" + i + ").</td>\n";
+                cont += "   <td>nombre:" + edddrive.EDDDRIVE.usuarios.tabla[i].usuario_.getUsuario_() + " contraseña:" + edddrive.EDDDRIVE.usuarios.tabla[i].usuario_.getContrasena_() + "</td>\n";
+
+                cont += "</tr>\n";
+            }
+            
+        }
+        
+        return ";";
+    }
+    
+    
     
 }

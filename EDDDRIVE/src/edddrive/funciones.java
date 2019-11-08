@@ -15,6 +15,8 @@ import edddrive.classes.*;
 import edddrive.estructuras.arbolAVL.nodo;
 import edddrive.estructuras.*;
 import edddrive.formularios.*;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
@@ -176,7 +178,7 @@ public class funciones {
         
     }
     
-    public void mostrarImagen (reportes rp) {
+    public void crearImagen (reportes rp) {
         
         
         if (null != rp) switch (rp) {
@@ -187,15 +189,9 @@ public class funciones {
                 try {
                     String comando = "dot " + this.rutaReportes + "vista_arbol.txt -o " + this.rutaReportes + "vista_arbol.png -Tpng";
                     Runtime.getRuntime().exec(comando);
-                } catch (Exception e) {}
-                
-                
-                Imagen img = new Imagen(this.rutaReportes + "vista_arbol.png");
-                edddrive.EDDDRIVE.fmrVisor_.removeAll();
-                edddrive.EDDDRIVE.fmrVisor_.add(img);
-                edddrive.EDDDRIVE.fmrVisor_.repaint();
-                
-                edddrive.EDDDRIVE.fmrVisor_.show();
+                } catch (Exception e) {
+                    System.out.print("no se pudo crear imagen vista árbol");
+                }
                 
                 break;
             case grafo:
@@ -205,6 +201,14 @@ public class funciones {
                 
                 break;
             case tablaHash:
+                
+                edddrive.EDDDRIVE.usuarios.crearReporte();
+                
+                try {
+                    String comando = "dot " + this.rutaReportes + "vista_hash.txt -o " + this.rutaReportes + "vista_hash.png -Tpng";
+                    Runtime.getRuntime().exec(comando);
+                } catch (Exception w) { System.out.println("No se pudo crear imagen hash");}
+                
                 
                 break;
             default:
