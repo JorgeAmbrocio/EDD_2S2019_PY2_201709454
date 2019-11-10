@@ -273,6 +273,7 @@ public class arbolAVL {
     public void eliminarNodo (nodo nd) {
         // tres opciones
         // no tien hijos
+
         if (nd.derecha == null && nd.izquierda == null) {
             
             // verifica si es hijo derecha o izquierda
@@ -311,7 +312,7 @@ public class arbolAVL {
     public nodo menorIzquierda (nodo nd) {
         // busca el dato menor de izquierda
         if (nd.izquierda != null) {
-            return this.menorIzquierda(nd);
+            return this.menorIzquierda(nd.izquierda);
         }else {
             return nd;
         }

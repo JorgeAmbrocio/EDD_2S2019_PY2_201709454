@@ -36,6 +36,8 @@ public class archivo extends JButton implements ActionListener {
         this.contenido_ = contenido_;
         this.estampaTiempo_ = this.crearEstampaTiempo();
         
+        this.addActionListener(this);
+        
         this.setText(this.nombre_ );
         this.setSize(120, 60);
         
@@ -100,7 +102,30 @@ public class archivo extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         
-        JOptionPane.showMessageDialog(null, "este es un mensaje", "titulo", JOptionPane.INFORMATION_MESSAGE);
+        
+        if (ae.getSource() == this.jmiEliminar) {
+            edddrive.EDDDRIVE.func.carpetaActual.archivos.eliminar(this.nombre_);
+        }else if  (ae.getSource() == this.jmiDescargar) {
+            
+            
+        }else if (ae.getSource() == this.jmiCompartir) {
+            
+        }else if  (ae.getSource() == this.jmiModificar) {
+            String nuevo_contenido = JOptionPane.showInputDialog(null, "Ingresa el nuevo contenido del archivo " + this.nombre_ + ":", "MODIFICAR");
+            edddrive.EDDDRIVE.func.carpetaActual.archivos.modificar(this.nombre_, nuevo_contenido);
+            this.contenido_ = nuevo_contenido;
+        }else if (ae.getSource() == this) {
+            // abrir el archivo
+            String contenido  = "";
+            
+            contenido +=  "Nombre: "  + this.nombre_ +  "\n";
+            contenido += "Contenido: " + this.contenido_ + " \n";
+            
+            JOptionPane.showMessageDialog(null, contenido, "ABRIR ARCHIVO", JOptionPane.NO_OPTION);
+            
+        }
+        
+        edddrive.EDDDRIVE.func.cargarCarpeta();
         
         
     }

@@ -212,6 +212,15 @@ public class funciones {
                 break;
             case pila:
                 
+                edddrive.EDDDRIVE.bitacora.crearReporte();
+                
+                try {
+                    String comando = "dot " + this.rutaReportes + "vista_pila.txt -o " + this.rutaReportes + "vista_pila.png -Tpng";
+                    Runtime.getRuntime().exec(comando);
+                }catch (Exception e) {
+                    JOptionPane.showMessageDialog(null , "No se pudo crear la imagen tabla hash");
+                }
+                
                 break;
             case tablaHash:
                 

@@ -69,7 +69,7 @@ public class pila {
         this.tamano ++;
     }
     
-    public void crearGrafico  () {
+    public void crearReporte  () {
         
         String cont = "";
         
@@ -108,7 +108,11 @@ public class pila {
         
         while (nd != null) {
             
-            cont += "<f" + indice + "> " + nd.dato + " " + nd.marcaTiempo + " |";
+            cont += "<f" + indice + "> " + nd.dato + " " + nd.marcaTiempo ;
+            
+            if (nd.abajo != null) {
+                cont += " |" ;
+            }
             
             nd  = nd.abajo; indice ++;
         }

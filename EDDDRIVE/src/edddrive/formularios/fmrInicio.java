@@ -216,6 +216,7 @@ public class fmrInicio extends javax.swing.JFrame {
         edddrive.EDDDRIVE.func.crearImagen(funciones.reportes.arbolAVL);
         edddrive.EDDDRIVE.func.crearImagen(funciones.reportes.tablaHash);
         edddrive.EDDDRIVE.func.crearImagen(funciones.reportes.grafo);
+        edddrive.EDDDRIVE.func.crearImagen(funciones.reportes.pila);
         edddrive.EDDDRIVE.fmrVisor_.show();
     }//GEN-LAST:event_btnReporteActionPerformed
 

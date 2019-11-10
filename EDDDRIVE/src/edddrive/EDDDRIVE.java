@@ -88,6 +88,10 @@ public class EDDDRIVE {
         us.directorio.crearCarpeta("o");
         us.directorio.crearCarpeta("p");
         
+        bitacora.insertarDato("este es un dato1");
+        bitacora.insertarDato("este es un dato2");
+        bitacora.insertarDato("este es un dato3");
+        bitacora.insertarDato("este es un dato4");
         
         //fmrVisor_.show();
         fmrIngresar_.show();
