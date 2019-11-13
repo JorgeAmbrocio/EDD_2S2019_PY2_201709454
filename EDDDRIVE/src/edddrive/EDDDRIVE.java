@@ -49,6 +49,7 @@ public class EDDDRIVE {
         usuarios = new tablaHash ();
         usuarios.insertar("admin", "admin", true);
         
+        
         usuario us = usuarios.buscar("admin");
         us.directorio.crearArchivo("a.exe", "contenido");
         us.directorio.crearArchivo("b.exe", "contenido");

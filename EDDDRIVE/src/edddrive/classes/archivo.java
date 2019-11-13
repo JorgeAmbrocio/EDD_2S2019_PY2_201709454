@@ -107,6 +107,7 @@ public class archivo extends JButton implements ActionListener {
             edddrive.EDDDRIVE.func.carpetaActual.archivos.eliminar(this.nombre_);
         }else if  (ae.getSource() == this.jmiDescargar) {
             
+            edddrive.EDDDRIVE.func.descargarArchivo(this);
             
         }else if (ae.getSource() == this.jmiCompartir) {
             

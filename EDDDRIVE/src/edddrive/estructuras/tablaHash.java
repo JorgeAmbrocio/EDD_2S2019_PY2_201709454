@@ -234,7 +234,7 @@ public class tablaHash {
         
     }
     
-    public void crearReporte() {
+    public void crearReporte(String nombre) {
         String cont= "";
         
         cont += "digraph G{\n";
@@ -258,7 +258,7 @@ public class tablaHash {
         PrintWriter pw ;
         
         try {
-            archivo = new FileWriter (edddrive.EDDDRIVE.func.rutaReportes + "vista_hash.txt") ;
+            archivo = new FileWriter (edddrive.EDDDRIVE.func.rutaReportes + nombre) ;
             pw = new PrintWriter (archivo);
             pw.print(cont);
             archivo.close();

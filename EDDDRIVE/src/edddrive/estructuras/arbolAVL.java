@@ -351,23 +351,7 @@ public class arbolAVL {
                 
                 contenido += this.getContenido_Arbol(this.raiz);
                 break;
-                
-            case 2:
-                // vista pre
-                contenido += this.getContenido_Preorder(this.raiz);
-                break;
-                
-            case 3 :
-                // vista pos
-                contenido += this.getContenido_Posorder(this.raiz);
-                break;
-                
-                
-            case 4:
-                // vista in
-                contenido += this.getContenido_Inorder(this.raiz);
-                break;
-                
+               
             default:
                 
                 break;
@@ -390,7 +374,9 @@ public class arbolAVL {
             
             
             
-        } catch (Exception e){}
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo crear el reporte de archivos.");
+        }
         
         
         

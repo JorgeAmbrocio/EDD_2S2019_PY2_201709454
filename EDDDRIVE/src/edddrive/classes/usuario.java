@@ -16,6 +16,9 @@ public class usuario {
     private String usuario_;
     private String contrasena_;
     public carpeta directorio;
+    
+    public int rol;
+    
     public usuario (String usuario__ , String contrasena__) {
         this.usuario_ = usuario__;
         this.contrasena_ = contrasena__;
