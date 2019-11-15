@@ -269,14 +269,14 @@ public class tablaHash {
     public String getContenidoReporte () {
         String cont = "";
         
-        for (int i = 0 ; i < edddrive.EDDDRIVE.usuarios.tMax ; i ++) {
+        for (int i = 0 ; i < this.tMax ; i ++) {
             
             
-            if (edddrive.EDDDRIVE.usuarios.tabla[i].estado_ == edddrive.estructuras.tablaHash.estado.ocupado) {
+            if (this.tabla[i].estado_ == edddrive.estructuras.tablaHash.estado.ocupado) {
                 cont += "<tr>\n";
             
                 cont += "   <td>" + i + ").</td>\n";
-                cont += "   <td>nombre:" + edddrive.EDDDRIVE.usuarios.tabla[i].usuario_.getUsuario_() + " contraseña:" + edddrive.EDDDRIVE.usuarios.tabla[i].usuario_.getContrasena_() + "</td>\n";
+                cont += "   <td>nombre:" + this.tabla[i].usuario_.getUsuario_() + " contraseña:" + this.tabla[i].usuario_.getContrasena_() + "</td>\n";
 
                 cont += "</tr>\n";
             }else {

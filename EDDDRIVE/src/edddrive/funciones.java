@@ -36,15 +36,15 @@ public class funciones {
     public carpeta carpetaActual;
     
     public String rutaReportes;
-    public String rutaArchivos ;
+    public String rutaArchivos;
     
-    public tablaHash usuarios_errores ;
+    public tablaHash usuarios_errores;
     
     public funciones() {
         this.rutaReportes ="C:/arte/Report/";
         this.rutaArchivos ="C:/arte/Files/";
         
-        this.usuarios_errores =new tablaHash();
+        this.usuarios_errores = new tablaHash();
     }
     
     
@@ -95,6 +95,9 @@ public class funciones {
                 JOptionPane.showMessageDialog(null, "Acceso exitoso.", ":-)", JOptionPane.INFORMATION_MESSAGE);
                 this.usuarioActual  = us;
                 this.carpetaActual = us.directorio;
+                
+                this.cargarCarpeta(); //edddrive.EDDDRIVE.func
+                
                 return true;
             }else {
                 // no son iguales
@@ -188,15 +191,8 @@ public class funciones {
                 if (xy[0] >= 900) {
                     xy[0] = 0 ; xy[1] += 60;
                 }
-                
-                
-                xy = this.cargaCarpeta_(jsp, nd.derecha, xy);
-                
-                
+                xy = this.cargaCarpeta_(jsp, nd.derecha, xy);   
             }
-            
-            
-            
         }
         
         return xy;

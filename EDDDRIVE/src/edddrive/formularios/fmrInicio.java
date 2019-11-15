@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JPopupMenu;
 import edddrive.classes.archivo;
 import edddrive.funciones;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 public class fmrInicio extends javax.swing.JFrame {
 
@@ -205,8 +206,9 @@ public class fmrInicio extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String nombre = JOptionPane.showInputDialog(null,"Ingrese el nombre de la carpeta.");
+        edddrive.EDDDRIVE.func.carpetaActual.crearCarpeta(nombre);
         
-        edddrive.EDDDRIVE.func.cargarCarpeta();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
