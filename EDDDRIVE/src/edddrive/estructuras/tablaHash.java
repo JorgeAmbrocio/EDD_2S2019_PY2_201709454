@@ -112,6 +112,10 @@ public class tablaHash {
                 if (this.tabla[indice].usuario_.getUsuario_().equalsIgnoreCase(usuario_) ) {
                     this.tabla[indice] = new celda();
                     this.tabla[indice].estado_ = estado.borrado;
+                    
+                    this.usado --;
+                    this.factorCarga = (double) ( (double) this.usado /  (double) this.tMax);
+                    
                     return;
                 }else {
                     if (indice == 0 || indice == 1 ) { indice = 1; }
@@ -126,6 +130,7 @@ public class tablaHash {
                     intento ++;
             }
         }
+        
     }
     
     public void redimencionarTabla () {
@@ -293,6 +298,21 @@ public class tablaHash {
         return cont;
     }
     
-    
+    public Object[] getListaUsuarios () {
+        Object[] obj = new Object[this.usado];
+        
+        int indice = 0;
+        for (int i = 0 ; i < this.tMax; i ++) {
+            
+            if (this.tabla[i].estado_ == estado.ocupado) {
+                obj[indice] = this.tabla[i].usuario_.getUsuario_();
+                indice ++;
+            }
+            
+        }
+        
+        
+        return obj;
+    }
     
 }

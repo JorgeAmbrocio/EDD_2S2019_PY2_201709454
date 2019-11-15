@@ -51,13 +51,7 @@ public class archivo extends JButton implements ActionListener {
         
         this.jmiEliminar  = new JMenuItem(); // iniciar el menu
         this.jmiEliminar.setText("Eliminar");
-        this.jmiEliminar.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                JOptionPane.showMessageDialog(null, "este es un action listener diferente");
-                
-            }
-        }); // añadir al item de menú la acción
+        this.jmiEliminar.addActionListener(this); // añadir al item de menú la acción
         
         this.jmiModificar  = new JMenuItem(); // iniciar el menu
         this.jmiModificar.setText("Modificar contenido");
@@ -110,6 +104,9 @@ public class archivo extends JButton implements ActionListener {
             edddrive.EDDDRIVE.func.descargarArchivo(this);
             
         }else if (ae.getSource() == this.jmiCompartir) {
+            
+            edddrive.EDDDRIVE.func.compartir(this);
+            
             
         }else if  (ae.getSource() == this.jmiModificar) {
             String nuevo_contenido = JOptionPane.showInputDialog(null, "Ingresa el nuevo contenido del archivo " + this.nombre_ + ":", "MODIFICAR");

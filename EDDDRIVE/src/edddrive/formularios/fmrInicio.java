@@ -63,6 +63,11 @@ public class fmrInicio extends javax.swing.JFrame {
         });
 
         jButton4.setText("Atrás");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -224,6 +229,11 @@ public class fmrInicio extends javax.swing.JFrame {
         edddrive.EDDDRIVE.fmrIngresar_.show();
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        edddrive.EDDDRIVE.func.goAtras();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -263,9 +273,11 @@ public class fmrInicio extends javax.swing.JFrame {
     public JScrollPane getPanel (int i) {
         if (i == 0) {
             return this.jsp;
-        }else {
+        }else if (i == 1) {
             return this.jsp1;
         }
+        
+        return null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

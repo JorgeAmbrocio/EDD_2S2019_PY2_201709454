@@ -30,6 +30,8 @@ public class carpeta extends JButton implements ActionListener {
         
         this.setText(nombre);
         this.setSize(120,60);
+        
+        this.addActionListener(this);
     }
     
     public void crearCarpeta (String nombre_) {
@@ -55,10 +57,6 @@ public class carpeta extends JButton implements ActionListener {
     }
     
     
-    public void modificarArchivo (String nombre,  String contenido) {
-        
-    }
-    
     
     public void eliminarArchivo (String nombre) {
         this.archivos.eliminar(nombre);
@@ -70,7 +68,12 @@ public class carpeta extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        edddrive.EDDDRIVE.func.carpetaActual = this;
+        edddrive.EDDDRIVE.func.cargarCarpeta();
+        
+        //JOptionPane.showMessageDialog(null, "Diste clic");
+        
     }
     
     

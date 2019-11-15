@@ -47,7 +47,6 @@ public class funciones {
         this.usuarios_errores = new tablaHash();
     }
     
-    
     public void cargaMasivaUsuarios() {
         
         JOptionPane.showMessageDialog(null, "Selecciona el archivo de carga masiva usuarios.");
@@ -151,9 +150,13 @@ public class funciones {
         JScrollPane jsp1 = edddrive.EDDDRIVE.fmrInicio_.getPanel(1);
         jsp.removeAll();
         
+        edddrive.EDDDRIVE.fmrInicio_.getPanel(0).removeAll();
+        edddrive.EDDDRIVE.fmrInicio_.getPanel(1).removeAll();
+        
+        
         // inserta el nuevo panel
         int [] nn = {0,0};
-        this.cargaCarpeta_(jsp, this.usuarioActual.directorio.archivos.raiz, nn);
+        this.cargaCarpeta_(jsp, this.carpetaActual.archivos.raiz, nn);
         
         this.cargaCarpeta__(jsp1, this.carpetaActual.carpetas);
         jsp1.repaint();
@@ -338,5 +341,24 @@ public class funciones {
         
         
     }
+    
+    public void goAtras () {
+        if (this.carpetaActual.padre != null) {
+            this.carpetaActual = this.carpetaActual.padre;
+        }
+        
+        this.cargarCarpeta();
+    }
+    
+    public void compartir (archivo ar) {
+        
+        Object[] obj = edddrive.EDDDRIVE.usuarios.getListaUsuarios();
+        
+        Object u = JOptionPane.showInputDialog(null, "Selecciona un usuario", "COMPARTIR", JOptionPane.QUESTION_MESSAGE, null, obj, obj[0]);
+        
+        String nombre = (String) u;
+        edddrive.EDDDRIVE.usuarios.buscar(nombre).directorio.crearArchivo(ar.nombre_, ar.contenido_);
+    }
+    
     
 }
