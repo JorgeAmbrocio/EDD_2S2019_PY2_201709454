@@ -39,7 +39,6 @@ public class fmrVisor extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 1000));
         setSize(new java.awt.Dimension(1000, 1000));
 

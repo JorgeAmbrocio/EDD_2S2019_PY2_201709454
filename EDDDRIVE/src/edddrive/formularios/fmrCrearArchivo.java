@@ -5,6 +5,8 @@
  */
 package edddrive.formularios;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author David Ventura
@@ -33,6 +35,7 @@ public class fmrCrearArchivo extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtExtension = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        btnCrear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +53,13 @@ public class fmrCrearArchivo extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel3.setText("NOMBRE ARCHIVO (nombre & extensión)");
 
+        btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,7 +73,10 @@ public class fmrCrearArchivo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtExtension, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtExtension, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -77,12 +90,38 @@ public class fmrCrearArchivo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCrear)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        if(this.txtNombre.getText().length() == 0|| this.txtExtension.getText().length() == 0   ){
+            JOptionPane.showMessageDialog(null, "Debes llenar los campos principales.");
+            return;
+        }else if (this.txtContenido.getText().length() == 0 ) {
+            
+            JOptionPane.showMessageDialog(null, "El contenido del archivo será \"\"");
+            
+        }
+        
+        edddrive.EDDDRIVE.func.carpetaActual.crearArchivo(this.txtNombre.getText() + "\\." +  this.txtExtension.getText(), this.txtContenido.getText());
+        
+        edddrive.EDDDRIVE.func.cargarCarpeta();
+        
+        JOptionPane.showMessageDialog(null, "Archivo creado exitosamente");
+        
+        this.hide();
+        
+    }//GEN-LAST:event_btnCrearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,6 +159,7 @@ public class fmrCrearArchivo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCrear;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;

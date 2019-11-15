@@ -45,6 +45,16 @@ public class carpeta extends JButton implements ActionListener {
         this.archivos.insertar(nombre , tmp);
     }
     
+    
+    public boolean buscarCarpeta (String nombre_) {
+        
+        carpeta cp = carpetas.getDato(nombre);
+        
+        return cp != null;
+        
+    }
+    
+    
     public void modificarArchivo (String nombre,  String contenido) {
         
     }
