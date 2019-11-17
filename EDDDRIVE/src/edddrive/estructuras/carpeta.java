@@ -11,7 +11,9 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import javax.swing.JButton;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 
 /**
  *
@@ -24,6 +26,10 @@ public class carpeta extends JButton implements ActionListener {
     public arbolAVL archivos;
     public listaDobleEnlazada carpetas;
     
+    
+    public JPopupMenu pum;
+    public JMenuItem jmiEliminar, jmiModificar;
+    
     public carpeta () {
         this.archivos = new arbolAVL();
         this.carpetas  = new listaDobleEnlazada();
@@ -32,6 +38,19 @@ public class carpeta extends JButton implements ActionListener {
         this.setSize(120,60);
         
         this.addActionListener(this);
+        
+        this.pum = new JPopupMenu();
+        
+        this.jmiEliminar  = new JMenuItem ();
+        this.jmiEliminar.setText("Eliminar");
+        this.jmiEliminar.addActionListener(this);
+        
+        this.jmiModificar  = new JMenuItem ();
+        this.jmiModificar.setText("Modificar");
+        this.jmiModificar.addActionListener(this);
+        
+        
+        
     }
     
     public void crearCarpeta (String nombre_) {
@@ -69,10 +88,10 @@ public class carpeta extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         
-        edddrive.EDDDRIVE.func.carpetaActual = this;
-        edddrive.EDDDRIVE.func.cargarCarpeta();
-        
-        //JOptionPane.showMessageDialog(null, "Diste clic");
+        if (ae.getSource() == this) {
+            edddrive.EDDDRIVE.func.carpetaActual = this;
+            edddrive.EDDDRIVE.func.cargarCarpeta();
+        }
         
     }
     

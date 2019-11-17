@@ -22,6 +22,7 @@ public class EDDDRIVE {
     public static fmrInicio fmrInicio_;
     public static fmrVisor fmrVisor_ ;
     public static fmrCrearArchivo fmrCrearArchivo_ ;
+    public static fmrModifcarArchivo fmrModificarArchivo_;
     
     public static funciones func ;
     public static procedimientos proc;
@@ -44,6 +45,7 @@ public class EDDDRIVE {
         fmrInicio_ = new fmrInicio(); fmrInicio_.setLocationRelativeTo(null);
         fmrVisor_ = new fmrVisor() ;
         fmrCrearArchivo_ = new fmrCrearArchivo();
+        fmrModificarArchivo_ = new fmrModifcarArchivo();
         
         
         // variables que contienen la raíz de los objetos necesarios

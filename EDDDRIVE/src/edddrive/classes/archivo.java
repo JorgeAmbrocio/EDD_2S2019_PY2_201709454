@@ -109,9 +109,11 @@ public class archivo extends JButton implements ActionListener {
             
             
         }else if  (ae.getSource() == this.jmiModificar) {
-            String nuevo_contenido = JOptionPane.showInputDialog(null, "Ingresa el nuevo contenido del archivo " + this.nombre_ + ":", "MODIFICAR");
-            edddrive.EDDDRIVE.func.carpetaActual.archivos.modificar(this.nombre_, nuevo_contenido);
-            this.contenido_ = nuevo_contenido;
+            //String nuevo_contenido = JOptionPane.showInputDialog(null, "Ingresa el nuevo contenido del archivo " + this.nombre_ + ":", "MODIFICAR");
+            //edddrive.EDDDRIVE.func.carpetaActual.archivos.modificar(this.nombre_, nuevo_contenido);
+            
+            //this.contenido_ = nuevo_contenido;
+            edddrive.EDDDRIVE.fmrModificarArchivo_.show();
         }else if (ae.getSource() == this) {
             // abrir el archivo
             String contenido  = "";

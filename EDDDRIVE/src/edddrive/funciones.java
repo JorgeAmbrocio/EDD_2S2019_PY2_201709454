@@ -78,6 +78,41 @@ public class funciones {
         
     }
     
+    public void cargaMasivaArchivos () {
+        
+        JOptionPane.showMessageDialog(null, "Selecciona el archivo de carga masiva usuarios.");
+        
+        JFileChooser filechooser = new JFileChooser ();
+        
+        filechooser.showOpenDialog(filechooser);
+        
+        try {
+            // abre el archivo y extrae la información necesaria
+            String ruta = filechooser.getSelectedFile().getAbsolutePath();
+            File archivo = new File (ruta) ;
+            FileReader  fr = new FileReader (archivo);
+            BufferedReader br = new BufferedReader (fr);
+            
+            String linea = br.readLine() ;
+            
+            // recorre cada fila del archivo
+            while ( (  linea = br.readLine() ) != null ) {
+                
+                String datos[] = linea.split(",");
+                this.carpetaActual.crearArchivo(datos[0], datos[1]);
+            }
+            
+            JOptionPane.showMessageDialog(null, "La carga ha sido realizaa correctamente", "CARGA", JOptionPane.INFORMATION_MESSAGE);
+            
+        } catch (Exception e) {JOptionPane.showMessageDialog(null, "No se ha podido encontrar el archivo.");}
+        
+        
+        
+        this.cargarCarpeta();
+        
+    }
+    
+    
     public boolean Ingresar (String usuario , String contrasena) {
         
         contrasena = EDDDRIVE.usuarios.sha256(contrasena);
@@ -359,6 +394,8 @@ public class funciones {
         String nombre = (String) u;
         edddrive.EDDDRIVE.usuarios.buscar(nombre).directorio.crearArchivo(ar.nombre_, ar.contenido_);
     }
+    
+    
     
     
 }

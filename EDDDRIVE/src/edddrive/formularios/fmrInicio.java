@@ -112,6 +112,11 @@ public class fmrInicio extends javax.swing.JFrame {
         });
 
         jButton8.setText("Cargar archivos");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -233,6 +238,11 @@ public class fmrInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         edddrive.EDDDRIVE.func.goAtras();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        edddrive.EDDDRIVE.func.cargaMasivaArchivos();
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments

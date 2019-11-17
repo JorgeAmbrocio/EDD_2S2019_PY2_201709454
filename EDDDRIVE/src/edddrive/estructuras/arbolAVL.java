@@ -214,7 +214,16 @@ public class arbolAVL {
             }
             
         } else {
-            JOptionPane.showMessageDialog(null, "Este dato ya ha sido insertado: " + nuevo.cont );
+            int respuesta = JOptionPane.showConfirmDialog(null, "Este archivo ya existe, ¿deseas reescribirlo?", "REEMPLAZAR", JOptionPane.YES_NO_OPTION);
+            
+            if (respuesta == JOptionPane.YES_OPTION) {
+                // sí sobre escribir
+                
+            }else {
+                // no sobre escribir
+                
+            }
+            
         }
         
         // actualizar altura
@@ -280,9 +289,10 @@ public class arbolAVL {
             if (nd.padre != null && nd.padre.derecha == nd) {
                 // es el hijo derecha, se elimina el apuntador al nodo
                 nd.padre.derecha = null;
-            }else {
+            }else if (nd.padre != null) {
                 nd.padre.izquierda = null;
             }
+            
             
             JOptionPane.showMessageDialog(null, "El elemento ha sido eliminado con éxito.", "Titulo", JOptionPane.INFORMATION_MESSAGE);
             
