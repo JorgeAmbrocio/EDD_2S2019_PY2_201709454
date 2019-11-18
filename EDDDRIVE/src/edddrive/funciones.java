@@ -49,6 +49,8 @@ public class funciones {
     
     public void cargaMasivaUsuarios() {
         
+        edddrive.EDDDRIVE.bitacora.insertarDato(this.usuarioActual.getUsuario_() + " ha creado una carga masiva de usuarios.");
+        
         JOptionPane.showMessageDialog(null, "Selecciona el archivo de carga masiva usuarios.");
         
         JFileChooser filechooser = new JFileChooser ();
@@ -79,6 +81,7 @@ public class funciones {
     }
     
     public void cargaMasivaArchivos () {
+        edddrive.EDDDRIVE.bitacora.insertarDato(this.usuarioActual.getUsuario_() + " ha creado una carga masiva de archivos.");
         
         JOptionPane.showMessageDialog(null, "Selecciona el archivo de carga masiva usuarios.");
         
@@ -114,6 +117,7 @@ public class funciones {
     
     
     public boolean Ingresar (String usuario , String contrasena) {
+        
         
         contrasena = EDDDRIVE.usuarios.sha256(contrasena);
         
@@ -154,6 +158,7 @@ public class funciones {
         
         // ingresa el usuario
         edddrive.EDDDRIVE.usuarios.insertar(usuario, contrasena, true);
+        edddrive.EDDDRIVE.bitacora.insertarDato( "Se ha registrado un nuevo usuario: " + usuario);
         
         JOptionPane.showMessageDialog(null, "Registro exitoso, regresa al formualrio de ingreso para iniciar sesión.", ":-)", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -267,6 +272,9 @@ public class funciones {
     
     public void crearImagen (reportes rp) {
         
+        edddrive.EDDDRIVE.bitacora.insertarDato( this.usuarioActual.getUsuario_() + " ha generado los reportes de estructuras.");
+        
+        
         this.carpetaActual.archivos.CrearReporte(1);
                 
         try {
@@ -326,6 +334,9 @@ public class funciones {
     public void descargarArchivo (archivo ar) {
         //  descarga el arhchivo en la computadora
         
+        edddrive.EDDDRIVE.bitacora.insertarDato( this.usuarioActual.getUsuario_() + " ha descargado el archivo " + ar.nombre_);
+        
+        
         //solicita la b´squeda de la carpeta en la que sedesa almacenar el archivo
         String folder  = "C:/";
         String archivo = this.rutaArchivos + ar.nombre_;
@@ -370,6 +381,9 @@ public class funciones {
         
         String nombre = (String) u;
         edddrive.EDDDRIVE.usuarios.buscar(nombre).directorio.crearArchivo(ar.nombre_, ar.contenido_);
+        
+        edddrive.EDDDRIVE.bitacora.insertarDato( this.usuarioActual.getUsuario_() + " ha compartido el archivo " + ar.nombre_ + " con el usuario " + (String) u);
+        
     }
     
     

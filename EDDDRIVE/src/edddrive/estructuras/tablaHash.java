@@ -43,6 +43,15 @@ public class tablaHash {
     
     public void insertar (String usuario_, String contrasena_, boolean encriptar) {
         
+        // verifica que no existan los usuarios
+        usuario u = this.buscar(usuario_);
+        
+        if (u != null) {
+            JOptionPane.showMessageDialog(null, "Usuario ya existe " + usuario_);
+            return;
+        }
+        
+        
         // verifica si aún tenemos espacio para insertar el dato
         if (this.factorCarga  > 0.75) {
             this.redimencionarTabla();

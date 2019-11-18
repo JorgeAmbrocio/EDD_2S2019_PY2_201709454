@@ -99,6 +99,8 @@ public class archivo extends JButton implements ActionListener {
         
         if (ae.getSource() == this.jmiEliminar) {
             edddrive.EDDDRIVE.func.carpetaActual.archivos.eliminar(this.nombre_);
+            edddrive.EDDDRIVE.bitacora.insertarDato( edddrive.EDDDRIVE.func.usuarioActual.getUsuario_() + "  ha eliminado el archivo " + this.nombre_);
+        
         }else if  (ae.getSource() == this.jmiDescargar) {
             
             edddrive.EDDDRIVE.func.descargarArchivo(this);
@@ -114,6 +116,8 @@ public class archivo extends JButton implements ActionListener {
             
             //this.contenido_ = nuevo_contenido;
             edddrive.EDDDRIVE.fmrModificarArchivo_.show();
+            edddrive.EDDDRIVE.bitacora.insertarDato( edddrive.EDDDRIVE.func.usuarioActual.getUsuario_() + "  ha modificado el archivo " + this.nombre_);
+        
         }else if (ae.getSource() == this) {
             // abrir el archivo
             String contenido  = "";
