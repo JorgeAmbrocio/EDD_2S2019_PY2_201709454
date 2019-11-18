@@ -45,7 +45,7 @@ public class fmrInicio extends javax.swing.JFrame {
         btnReporte = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblRuta = new javax.swing.JLabel();
         jsp = new javax.swing.JScrollPane();
         jButton9 = new javax.swing.JButton();
         jsp1 = new javax.swing.JScrollPane();
@@ -148,8 +148,8 @@ public class fmrInicio extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel5.setText("EDDDRIVE");
 
-        jLabel6.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jLabel6.setText("Ruta:");
+        lblRuta.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        lblRuta.setText("Ruta:");
 
         jButton9.setText("Salir");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +176,7 @@ public class fmrInicio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jsp1, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jsp, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 971, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 971, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -185,7 +185,7 @@ public class fmrInicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -289,6 +289,11 @@ public class fmrInicio extends javax.swing.JFrame {
         
         return null;
     }
+    
+    public void setRuta (String ruta) {
+        this.lblRuta.setText(ruta);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReporte;
@@ -300,10 +305,10 @@ public class fmrInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jsp;
     private javax.swing.JScrollPane jsp1;
+    private javax.swing.JLabel lblRuta;
     // End of variables declaration//GEN-END:variables
 }

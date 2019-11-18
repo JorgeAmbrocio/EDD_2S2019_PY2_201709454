@@ -54,7 +54,7 @@ public class EDDDRIVE {
         
         
         usuario us = usuarios.buscar("admin");
-        us.directorio.crearArchivo("a.exe", "contenido");
+        /*us.directorio.crearArchivo("a.exe", "contenido");
         us.directorio.crearArchivo("b.exe", "contenido");
         us.directorio.crearArchivo("c.exe", "contenido");
         us.directorio.crearArchivo("d.exe", "contenido");
@@ -90,7 +90,7 @@ public class EDDDRIVE {
         us.directorio.crearCarpeta("m");
         us.directorio.crearCarpeta("n");
         us.directorio.crearCarpeta("o");
-        us.directorio.crearCarpeta("p");
+        us.directorio.crearCarpeta("p");*/
         
         bitacora.insertarDato("este es un dato1");
         bitacora.insertarDato("este es un dato2");

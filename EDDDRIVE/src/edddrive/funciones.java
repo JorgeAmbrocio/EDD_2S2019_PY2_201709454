@@ -196,6 +196,8 @@ public class funciones {
         this.cargaCarpeta__(jsp1, this.carpetaActual.carpetas);
         jsp1.repaint();
         jsp.repaint();
+        
+        edddrive.EDDDRIVE.fmrInicio_.setRuta(this.carpetaActual.getRuta(this.carpetaActual, ""));
     }
     
     public int[] cargaCarpeta_ (JScrollPane jsp , arbolAVL.nodo nd, int [] xy) {
@@ -311,38 +313,13 @@ public class funciones {
             JOptionPane.showMessageDialog(null , "No se pudo crear la imagen tabla de usuarios no ingresados.");
         }
         
-        
-        
-        
-        if (null != rp) switch (rp) {
-            case arbolAVL:
-                
-                
-                
-                break;
-            case grafo:
-                
-                
-                
-                break;
-            case matrizAdyacente:
-                
-                break;
-            case pila:
-                
-                
-                
-                break;
-            case tablaHash:
-                
-                
-                
-                break;
-            default:
-                break;
+        edddrive.EDDDRIVE.func.carpetaActual.crearGrafico_();
+        try {
+            String comando = "dot " + this.rutaReportes + "vista_matriz.txt -o " + this.rutaReportes + "vista_matriz.png -Tpng";
+            Runtime.getRuntime().exec(comando);
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null , "No se pudo crear la imagen tabla de usuarios no ingresados.");
         }
-        
-        
         
     }
     

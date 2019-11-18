@@ -40,7 +40,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jsp1" min="-2" pref="960" max="-2" attributes="0"/>
                   <Component id="jsp" alignment="0" min="-2" pref="960" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="0" min="-2" pref="971" max="-2" attributes="0"/>
+                  <Component id="lblRuta" alignment="0" min="-2" pref="971" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -52,7 +52,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                  <Component id="lblRuta" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -210,7 +210,7 @@
         <Property name="text" type="java.lang.String" value="EDDDRIVE"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="lblRuta">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Bell MT" size="18" style="1"/>
