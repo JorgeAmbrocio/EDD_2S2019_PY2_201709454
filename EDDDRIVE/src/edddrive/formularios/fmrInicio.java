@@ -224,6 +224,9 @@ public class fmrInicio extends javax.swing.JFrame {
         
         edddrive.EDDDRIVE.func.cargarCarpeta();
         
+        edddrive.EDDDRIVE.bitacora.insertarDato( edddrive.EDDDRIVE.func.usuarioActual.getUsuario_() + "  creado la carpeta " + nombre);
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed

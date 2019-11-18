@@ -116,6 +116,7 @@ public class fmrCrearArchivo extends javax.swing.JFrame {
         edddrive.EDDDRIVE.func.carpetaActual.crearArchivo(this.txtNombre.getText() + "\\." +  this.txtExtension.getText(), this.txtContenido.getText());
         
         edddrive.EDDDRIVE.func.cargarCarpeta();
+        edddrive.EDDDRIVE.bitacora.insertarDato( edddrive.EDDDRIVE.func.usuarioActual.getUsuario_() + "  creado el archivo " + this.txtNombre.getText() + "\\." +  this.txtExtension.getText());
         
         JOptionPane.showMessageDialog(null, "Archivo creado exitosamente");
         
